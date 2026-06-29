@@ -10,114 +10,70 @@ You may complete this model card for whichever version you used, or compare both
 ## 1. Model Overview
 
 **Model type:**  
-Describe whether you used the rule based model, the ML model, or both.  
-Example: “I used the rule based model only” or “I compared both models.”
+Rule based
 
 **Intended purpose:**  
-What is this model trying to do?  
-Example: classify short text messages as moods like positive, negative, neutral, or mixed.
+Classify short text messages as moods like positive, negative, neutral, or mixed.
 
 **How it works (brief):**  
-For the rule based version, describe the scoring rules you created.  
-For the ML version, describe how training works at a high level (no math needed).
+Score of 0 is neutral, -1 is negative, 1 is positive. Score is calculated based on key words or phrases.
 
 
 
 ## 2. Data
 
 **Dataset description:**  
-Summarize how many posts are in `SAMPLE_POSTS` and how you added new ones.
+There are 11 sample posts with varying moods and new true labels that apply to each one.
 
 **Labeling process:**  
-Explain how you chose labels for your new examples.  
-Mention any posts that were hard to label or could have multiple valid labels.
+I chose labels based on what overall emotion the post conveyed, even if some words or emojis seemed conflicting. 
 
 **Important characteristics of your dataset:**  
-Examples you might include:  
-
 - Contains slang or emojis  
 - Includes sarcasm  
 - Some posts express mixed feelings  
 - Contains short or ambiguous messages
 
 **Possible issues with the dataset:**  
-Think about imbalance, ambiguity, or missing kinds of language.
+Too small of a sample, not exploring enough nuances in language.
+
 
 ## 3. How the Rule Based Model Works (if used)
 
 **Your scoring rules:**  
-Describe the modeling choices you made.  
-Examples:  
-
-- How positive and negative words affect score  
-- Negation rules you added  
-- Weighted words  
-- Emoji handling  
-- Threshold decisions for labels
+Negation and negative words decrease the score. Positive words increase the score. Score of 1 is positive, 0 is neutral, -1 is negative. 
 
 **Strengths of this approach:**  
-Where does it behave predictably or reasonably well?
+Simple sentences and even with negation.
 
 **Weaknesses of this approach:**  
-Where does it fail?  
-Examples: sarcasm, subtlety, mixed moods, unfamiliar slang.
+It fails on shorter phrases, complex emotions, and sarcasm.
 
-## 4. How the ML Model Works (if used)
-
-**Features used:**  
-Describe the representation.  
-Example: “Bag of words using CountVectorizer.”
-
-**Training data:**  
-State that the model trained on `SAMPLE_POSTS` and `TRUE_LABELS`.
-
-**Training behavior:**  
-Did you observe changes in accuracy when you added more examples or changed labels?
-
-**Strengths and weaknesses:**  
-Strengths might include learning patterns automatically.  
-Weaknesses might include overfitting to the training data or picking up spurious cues.
-
-## 5. Evaluation
+## 4. Evaluation
 
 **How you evaluated the model:**  
-Both versions can be evaluated on the labeled posts in `dataset.py`.  
-Describe what accuracy you observed.
+The rule based accuracy is evaluated to be 55% based upon the predicted vs expected outputs. 
 
 **Examples of correct predictions:**  
-Provide 2 or 3 examples and explain why they were correct.
+"I love this class so much" was appropiately marked as positive since it expresses gratitude. "I am not happy about this" was appropiately marked as negative since it expresses dissatisfaction.
 
 **Examples of incorrect predictions:**  
-Provide 2 or 3 examples and explain why the model made a mistake.  
-If you used both models, show how their failures differed.
+"Yeah I'm totally excited about this 🥲" was incorrectly marked positive due to sarcasm. "What the hell!" was incorrectly marked neutral since it is a short phrase with none of the listed key words.
 
-## 6. Limitations
-
-Describe the most important limitations.  
-Examples:  
+## 5. Limitations
 
 - The dataset is small  
-- The model does not generalize to longer posts  
 - It cannot detect sarcasm reliably  
 - It depends heavily on the words you chose or labeled
 
-## 7. Ethical Considerations
-
-Discuss any potential impacts of using mood detection in real applications.  
-Examples: 
+## 6. Ethical Considerations
 
 - Misclassifying a message expressing distress  
 - Misinterpreting mood for certain language communities  
 - Privacy considerations if analyzing personal messages
 
 ## 8. Ideas for Improvement
-
-List ways to improve either model.  
-Possible directions:  
-
 - Add more labeled data  
-- Use TF IDF instead of CountVectorizer  
 - Add better preprocessing for emojis or slang  
-- Use a small neural network or transformer model  
 - Improve the rule based scoring method  
 - Add a real test set instead of training accuracy only

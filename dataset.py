@@ -17,12 +17,17 @@ POSITIVE_WORDS = [
     "great",
     "good",
     "love",
+    "like",
     "excited",
     "awesome",
     "fun",
     "chill",
     "relaxed",
     "amazing",
+    "enjoy",
+    "nice",
+    "wonderful",
+    "glad",
 ]
 
 NEGATIVE_WORDS = [
@@ -50,7 +55,12 @@ SAMPLE_POSTS = [
     "This is fine",
     "So excited for the weekend",
     "I am not happy about this",
-]
+    "Yeah I'm totally excited about this 🥲",
+    "What the hell!",
+    "That is highkey terrifying",
+    "I do not understand this?",
+    "Not too sure about that ..."
+    ]
 
 # Human labels for each post above.
 # Allowed labels in the starter:
@@ -65,6 +75,11 @@ TRUE_LABELS = [
     "neutral",   # "This is fine"
     "positive",  # "So excited for the weekend"
     "negative",  # "I am not happy about this"
+    "negative", # "Yeah I'm totally excited about this 🥲"
+    "negative", # "What the hell!"
+    "negative", # "That is highkey terrifying"
+    "neutral", # "I do not understand this?" 
+    "mixed" # "Not too sure about that ..."
 ]
 
 # TODO: Add 5-10 more posts and labels.

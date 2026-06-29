@@ -7,6 +7,9 @@ from typing import List
 from mood_analyzer import MoodAnalyzer
 from dataset import SAMPLE_POSTS, TRUE_LABELS
 
+# print(len(SAMPLE_POSTS)) 
+# print(len(TRUE_LABELS))
+
 
 def evaluate_rule_based(posts: List[str], labels: List[str]) -> float:
     """

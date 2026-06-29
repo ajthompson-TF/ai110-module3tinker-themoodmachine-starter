@@ -6,6 +6,22 @@ This lab gives you hands on experience with how basic systems work, where they b
 
 ---
 
+## The core concept students needed to understand
+
+Understanding what their code is doing. Making and reviewing changes manually. Using AI as a tool while still being able to explain their specific algorithms. Explaining their work in the model card.
+
+## Where students are most likely to struggle
+
+Getting familiar with this codebase and trying to trace how each method works. Learning how to explain technical components in model_card.py. Misunderstanding instructions on adding true labels (adding extra stuff like "confused" rather than sticking to "negative"/"postive"/etc.).
+
+## Where AI was helpful vs misleading
+
+AI was helpful in giving ideas on how to implement the methods in mood_analyzer.py but was misleading when creating the score_text method by initially not taking into account negative or positive words from the dataset.py, only negation.
+
+## One way I would guide a student without giving the answer
+
+I would tell a student to think about what moods they would expect and evaluate ways their algorithm can assign a mood accurately. What score constitutes which mood? Which key words create a certain score or mood? They are also allowed to use AI to provide hints and explain blocks of code, and I will remind them of that.
+
 ## Repo Structure
 
 ```plaintext
